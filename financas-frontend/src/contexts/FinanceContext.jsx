@@ -17,12 +17,20 @@ export const FinanceProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const [balance, setBalance] = useState({
-    receitas: 0,
-    despesas: 0,
-    saldo: 0,
-    receitas_anuais: 0,
-    despesas_anuais: 0,
-    saldo_anual: 0
+    mensal: {
+      receitas: 0,
+      despesas: 0,
+      saldo: 0,
+    },
+    anual: {
+      receitas: 0,
+      despesas: 0,
+      saldo: 0,
+    },
+    periodo: {
+      mes: new Date().getMonth() + 1,
+      ano: new Date().getFullYear(),
+    },
   });
   const [filters, setFilters] = useState({
     month: new Date().getMonth() + 1,
