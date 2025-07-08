@@ -89,22 +89,7 @@ export const FinanceProvider = ({ children }) => {
     try {
       setError(null);
       const data = await transactionAPI.getBalance(filters);
-      setBalance({
-        mensal: {
-          receitas: data.receitas,
-          despesas: data.despesas,
-          saldo: data.saldo,
-        },
-        anual: {
-          receitas: data.receitas_anuais,
-          despesas: data.despesas_anuais,
-          saldo: data.saldo_anual,
-        },
-        periodo: {
-          mes: filters.month,
-          ano: filters.year,
-        },
-      });
+      setBalance(data);
     } catch (err) {
       setError('Erro ao carregar saldo: ' + err.message);
     }
