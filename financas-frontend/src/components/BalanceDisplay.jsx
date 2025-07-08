@@ -6,7 +6,13 @@ import { useFinance } from '../contexts/FinanceContext';
 const BalanceDisplay = () => {
   const { balance, loading } = useFinance();
 
-  if (loading || !balance) {
+  if (
+    loading ||
+    !balance ||
+    !balance.mensal ||
+    !balance.anual ||
+    !balance.periodo
+  ) {
     return (
       <div className="grid gap-4 md:grid-cols-3">
         {[1, 2, 3].map((i) => (
